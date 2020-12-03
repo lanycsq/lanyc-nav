@@ -2,43 +2,52 @@ const $siteList = $('.siteList');
 const $lastLi = $siteList.find('li.last');
 const x = localStorage.getItem('x');
 const xObject = JSON.parse(x) //把字符串转换对象
+//const xObject = null
 const hashMap = xObject || [{
-        'logo': "./images/acfun.png",
-        'logoType': 'image',
+        'logo': "A",
         'url': 'https://acfun.cn'
     },
     {
-        'logo': "./images/bilibili.png",
-        'logoType': 'image',
+        'logo': "B",
         'url': 'https://bilibili.com'
     },
     {
-        'logo': "./images/zhihu.png",
-        'logoType': 'image',
+        'logo': "Z",
         'url': 'https://zhihu.com'
     }
 ]
 const simplifyUrl = (url) => {
     return url.replace('https://', '')
         .replace('http://', '')
-        .replace('www', '')
-
+        .replace('www.', '')
+        .replace(/\/.*/, '') //删除/后面的内容
 }
 const render = () => {
-    hashMap.forEach(node => {
-
+    $siteList.find('li:not(.last)').remove();
+    hashMap.forEach((node, index) => {
         const $li = $(`
-    <li>
-        <a href="${node.url}">
+        <li>
             <div class="site">
                 <div class="logo">
-                    ${node.url[0]}
+                    ${node.logo}
                 </div> 
                 <div class="link">${simplifyUrl(node.url)}</div> 
+                <div class="closed">
+                    <svg class="icon">
+                        <use xlink: href="#icon-closed"></use> 
+                    </svg>
+                </div>
             </div> 
-        </a>
-    </li>
+        </li>
     `).insertBefore($lastLi);
+        $li.on('click', () => {
+            window.open(node.url)
+        })
+        $li.on('click', '.closed', (e) => {
+            e.stopPropagation();
+            hashMap.splice(index, 1);
+            render();
+        })
     })
 }
 
@@ -49,16 +58,28 @@ $('.addButton').on('click', () => {
         url = "https://" + url
     }
     hashMap.push({
-        'logo': url[0],
-        'logoType': 'text',
+        'logo': simplifyUrl(url)[0].toUpperCase(),
         "url": url
     })
     $siteList.find('li:not(.last)').remove();
     render();
 })
 
-//关闭页面之前触发
+//关闭页面之前触发 
 window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap) //把对象变成字符串
     localStorage.setItem('x', string)
 }
+
+$(document).on('keypress', (e) => {
+    console.log(e);
+    const {
+        key
+    } = e;
+    for (let i = 0; i < hashMap.length; i++) {
+        if (hashMap[i].logo.toLowerCase() === key) {
+            window.open(hashMap[i].url)
+        }
+
+    }
+})
