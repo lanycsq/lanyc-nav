@@ -52,11 +52,6 @@ body {
     }
 }
 
-@media (max-width: 500px) {
-    .searchForm {
-        background-color: yellow;
-    }
-}
 
 .searchForm>input {
     width: 100%;
@@ -89,7 +84,7 @@ body {
 .globalMain .siteList {
     margin: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
 
 }
@@ -188,4 +183,4 @@ body {
     margin-top: 8px;
 }
 
-/*# sourceMappingURL=style.e0bce737.css.map */
+/*# sourceMappingURL=/style.e308ff8e.css.map */
