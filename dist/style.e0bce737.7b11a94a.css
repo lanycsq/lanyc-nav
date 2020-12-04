@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*::before，*::after {
+    box-sizing: border-box;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.globalHeader {
+    margin: 20px;
+
+}
+
+.searchForm {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (min-width: 500px) {
+    .searchForm {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .searchForm {
+        background-color: yellow;
+    }
+}
+
+.searchForm>input {
+    width: 100%;
+    height: 40px;
+    margin-right: 10px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+}
+
+.searchForm>button {
+    white-space: nowrap;
+    padding: 0 28px;
+    border: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #0282B9;
+    color: #fff;
+    font-size: 16px;
+}
+
+
+
+.globalMain {
+    max-width: 900px;
+    margin: 0 auto
+}
+
+.globalMain .siteList {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.siteList>li {
+    margin-bottom: 10px;
+}
+
+@media (min-width:500px) {
+    .globalMain .siteList {
+        margin-left: 0;
+        margin-right: -25px;
+        justify-content: flex-start;
+    }
+
+    .globalHeader {
+        margin: 80px 0;
+    }
+
+    .siteList>li {
+        margin-bottom: 10px;
+        margin-right: 25px;
+    }
+}
+
+
+
+.globalMain .site {
+    width: 160px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    background-color: #fff;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.globalMain .site>.logo {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    text-transform: uppercase;
+}
+
+.globalMain .site>.link {
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.globalMain .site .closed {
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    display: none;
+    cursor: default;
+}
+
+.globalMain .site:hover .closed {
+    display: block;
+}
+
+.globalMain .addButton {
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px 0;
+}
+
+.globalMain .addButton .icon {
+    width: 56px;
+    height: 56px;
+}
+
+.globalMain .addButton .icon-wrapper {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.globalMain .addButton .text {
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+
+
+/*# sourceMappingURL=/style.e0bce737.7b11a94a.css.map */
